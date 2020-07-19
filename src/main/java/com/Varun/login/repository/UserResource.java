@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rest/user")
+@RequestMapping("/data")
 public class UserResource {
 	
 	@Autowired
@@ -28,6 +28,12 @@ public class UserResource {
 		userrepository.save(user);
 		return userrepository.findAll();
 		
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE,value="/del")
+	public void delete(@RequestBody User user)
+	{
+		  userrepository.delete(user);
 	}
 
 }
